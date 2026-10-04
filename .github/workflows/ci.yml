@@ -1,0 +1,89 @@
+name: Continuous Integration (CI)
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frontend-ci:
+    name: Frontend — Build & Validate Bundle
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: 'frontend/package-lock.json'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Compile Production Bundle (Vite)
+        run: npm run build
+
+      - name: Verify Bundle Integrity
+        run: |
+          echo "Verifying production build output..."
+          test -f dist/index.html || { echo "Error: dist/index.html missing"; exit 1; }
+          test -d dist/assets || { echo "Error: dist/assets directory missing"; exit 1; }
+          echo "✓ Build integrity check passed. dist/ contents:"
+          ls -la dist/
+          echo "Bundle size breakdown:"
+          du -sh dist/assets/*
+
+      - name: Archive Production Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-production-bundle
+          path: frontend/dist/
+          retention-days: 7
+          if-no-files-found: error
+
+  infrastructure-ci:
+    name: Infrastructure — Terraform Validation & Linting
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./infrastructure
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform CLI
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.0
+
+      - name: Check Canonical Formatting (terraform fmt)
+        run: terraform fmt -check -diff
+
+      - name: Initialize Terraform (Syntax & Schema Only)
+        run: terraform init -backend=false
+
+      - name: Validate Terraform Configuration
+        run: terraform validate
+
+      - name: Run Trivy Security Vulnerability Scanner (IaC)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'config'
+          scan-ref: './infrastructure'
+          format: 'table'
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'
