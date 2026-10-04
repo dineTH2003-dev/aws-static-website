@@ -1,0 +1,39 @@
+{
+  "name": "dineth-portfolio",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Engineering portfolio of Dineth Wijesinghe — Software Engineering, Cloud, DevOps, SRE, and Distributed Systems",
+  "main": "index.jsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite"
+  },
+  "keywords": [
+    "portfolio",
+    "software-engineering",
+    "cloud-engineering",
+    "devops",
+    "sre",
+    "cybersecurity",
+    "aws",
+    "opentelemetry",
+    "react",
+    "vite"
+  ],
+  "author": "Dineth Wijesinghe",
+  "license": "MIT",
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@gsap/react": "^2.1.2",
+    "gsap": "^3.15.0",
+    "ogl": "^1.0.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8"
+  }
+}
