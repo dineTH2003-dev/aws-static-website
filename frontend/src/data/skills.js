@@ -1,0 +1,78 @@
+export const SKILLS_DATA = [
+  {
+    category: "Software Engineering",
+    description: "Developing robust backends, concurrent services, and modular user interfaces",
+    items: [
+      { name: "Go", icon: "go" },
+      { name: "Python", icon: "python" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "Node.js", icon: "nodejs" },
+      { name: "React", icon: "react" },
+      { name: "REST APIs", icon: "api" },
+      { name: "WebSockets", icon: "websocket" },
+    ],
+  },
+  {
+    category: "Cloud & Infrastructure",
+    description: "Designing scalable compute, storage, networking, and content delivery on AWS",
+    items: [
+      { name: "AWS", icon: "aws" },
+      { name: "Amazon EC2", icon: "aws" },
+      { name: "Amazon S3", icon: "aws" },
+      { name: "CloudFront CDN", icon: "aws" },
+      { name: "Route 53", icon: "aws" },
+      { name: "AWS IAM", icon: "aws" },
+      { name: "AWS ACM", icon: "aws" },
+      { name: "AWS WAF", icon: "aws" },
+    ],
+  },
+  {
+    category: "DevOps & SRE",
+    description: "Orchestrating containers, telemetry pipelines, CI/CD, and declarative infrastructure",
+    items: [
+      { name: "Docker", icon: "docker" },
+      { name: "Kubernetes (K3s)", icon: "kubernetes" },
+      { name: "Terraform", icon: "terraform" },
+      { name: "GitHub Actions", icon: "github" },
+      { name: "OpenTelemetry", icon: "opentelemetry" },
+      { name: "Prometheus", icon: "metrics" },
+      { name: "Grafana", icon: "metrics" },
+      { name: "Honeycomb", icon: "honeycomb" },
+    ],
+  },
+  {
+    category: "Linux & Systems",
+    description: "Kernel interactions, shell automation, daemon control, and administration",
+    items: [
+      { name: "Linux", icon: "linux" },
+      { name: "Bash", icon: "bash" },
+      { name: "Zsh", icon: "bash" },
+      { name: "Nginx", icon: "nginx" },
+      { name: "Git", icon: "git" },
+      { name: "TCP/IP & Networking", icon: "networking" },
+    ],
+  },
+  {
+    category: "Databases",
+    description: "Relational modeling, transaction integrity, and in-memory key-value caching",
+    items: [
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "MySQL", icon: "mysql" },
+      { name: "Redis", icon: "redis" },
+      { name: "SQLite", icon: "sql" },
+    ],
+  },
+  {
+    category: "Security",
+    description: "Principle of least privilege, token authentication, and web perimeter defense",
+    items: [
+      { name: "AWS IAM Policies", icon: "security" },
+      { name: "AWS WAF (Layer 7)", icon: "security" },
+      { name: "Origin Access Control", icon: "security" },
+      { name: "JWT & Token Auth", icon: "security" },
+      { name: "Linux Permissions", icon: "security" },
+      { name: "Network Security Basics", icon: "networking" },
+    ],
+  },
+];
