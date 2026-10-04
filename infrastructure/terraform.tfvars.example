@@ -1,0 +1,22 @@
+# ==============================================================================
+# AWS Static Website — Terraform Variables Example
+# Copy this file to `terraform.tfvars` and customize with your own values.
+# ==============================================================================
+
+# Target AWS region for S3 and general resources (WAF & ACM default to us-east-1 for CloudFront)
+aws_region = "ap-southeast-1"
+
+# S3 bucket name (must be globally unique across all AWS accounts worldwide)
+bucket_name = "dineth-portfolio-website-bucket"
+
+# Set to true only if you own a registered domain and wish to configure Route 53 & ACM
+enable_custom_domain = false
+
+# Your custom domain name (used only when enable_custom_domain = true)
+domain_name = "portfolio.yourdomain.com"
+
+# Environment tag
+environment = "production"
+
+# Project tag
+project_name = "aws-static-website"
