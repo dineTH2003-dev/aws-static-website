@@ -1,0 +1,29 @@
+# Node / Frontend Build & Dependencies
+**/node_modules/
+**/dist/
+**/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Terraform State & Lock
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Environment & OS
+.env
+.env.local
+.DS_Store
+Thumbs.db
